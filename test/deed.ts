@@ -8,7 +8,7 @@ const { expect } = chai;
 
 describe("Deed", () => {
   let deed: Deed;
-  const numberToMint = 50;
+  const numberToMint = 75;
 
   beforeEach(async () => {
     // 1

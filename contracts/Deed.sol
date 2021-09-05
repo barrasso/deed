@@ -1290,8 +1290,8 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
 
     string[] private acreage = [
         "1 Acre",
-        "2 Acre",
-        "3 Acre"
+        "2 Acres",
+        "3 Acres"
     ];
     
     string[] private dwellings = [
@@ -1500,7 +1500,7 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         if (keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('DWELLING'))) {
             output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output));
             if (greatness >= 11) {
-                output = string(abi.encodePacked(' ', output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
+                output = string(abi.encodePacked(output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
             }
         }
 
