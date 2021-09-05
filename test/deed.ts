@@ -8,7 +8,7 @@ const { expect } = chai;
 
 describe("Deed", () => {
   let deed: Deed;
-  const numberToMint = 64;
+  const numberToMint = 50;
 
   beforeEach(async () => {
     // 1
@@ -24,7 +24,7 @@ describe("Deed", () => {
 
 
     // Mint some deeds.
-    await deed.testClaim();
+    await deed.testClaim(numberToMint);
   });
 
   // 4

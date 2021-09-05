@@ -1289,9 +1289,9 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
 contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
 
     string[] private acreage = [
-        "1",
-        "2",
-        "3"
+        "1 Acre",
+        "2 Acre",
+        "3 Acre"
     ];
     
     string[] private dwellings = [
@@ -1299,7 +1299,7 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Hideaway",
         "Farmhouse",
         "Barn",
-        "Monestary",
+        "Monastery",
         "Barracks",
         "Manor",
         "Castle",
@@ -1495,17 +1495,22 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
     function pluck(uint256 tokenId, string memory keyPrefix, string[] memory sourceArray) internal view returns (string memory) {
         uint256 rand = random(string(abi.encodePacked(keyPrefix, toString(tokenId))));
         string memory output = sourceArray[rand % sourceArray.length];
-        // uint256 greatness = rand % 21;
-        // if (greatness > 14 && keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('DWELLING'))) {
-        //     output = string(abi.encodePacked('"', dwellingPrefixes[rand % dwellingPrefixes.length], '" ', output));
-        // }
-        // if (greatness >= 19 && keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('WEAPON'))) {
-        //     if (greatness == 19) {
-        //         output = string(abi.encodePacked('"', weaponPrefixes[rand % weaponPrefixes.length], '" ', output));
-        //     } else {
-        //         output = string(abi.encodePacked('"', weaponPrefixes[rand % weaponPrefixes.length], '" ', output, " & specials[rand % specials.length]"));
-        //     }
-        // }
+        uint256 greatness = rand % 21;
+
+        if (keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('DWELLING'))) {
+            output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output));
+            if (greatness >= 11) {
+                output = string(abi.encodePacked(' ', output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
+            }
+        }
+
+        if (keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('WEAPON'))) {
+            if (greatness >= 19) {
+                output = string(abi.encodePacked('"', weaponryPrefixes[rand % weaponryPrefixes.length], '" ', output));
+            } else if (greatness == 20) {
+                output = string(abi.encodePacked(output, ' ', weaponrySuffixes[rand % weaponrySuffixes.length]));
+            }
+        }
         return output;
     }
 
@@ -1515,23 +1520,23 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
 
         parts[1] = getAcreage(tokenId);
 
-        parts[2] = ' ';//'</text><text x="10" y="40" class="base">';
+        parts[2] = ' \n';//'</text><text x="10" y="40" class="base">';
 
         parts[3] = getDwelling(tokenId);
 
-        parts[4] = ' ';//'</text><text x="10" y="60" class="base">';
+        parts[4] = ' \n';//'</text><text x="10" y="60" class="base">';
 
         parts[5] = getAccessory(tokenId);
 
-        parts[6] = ' ';//'</text><text x="10" y="80" class="base">';
+        parts[6] = ' \n';//'</text><text x="10" y="80" class="base">';
 
         parts[7] = getWeapon(tokenId);
 
-        parts[8] = ' ';//'</text><text x="10" y="100" class="base">';
+        parts[8] = ' \n';//'</text><text x="10" y="100" class="base">';
 
         parts[9] = getCrop(tokenId);
 
-        parts[10] = ' ';//'</text><text x="10" y="120" class="base">';
+        parts[10] = ' \n';//'</text><text x="10" y="120" class="base">';
 
         parts[11] = getAnimal(tokenId);
 
@@ -1541,6 +1546,7 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         output = string(abi.encodePacked(output, parts[9], parts[10], parts[11], parts[12], parts[13], parts[14], parts[15], parts[16]));
 
         console.log(output);
+        console.log('\n');
         
         string memory json = Base64.encode(bytes(string(abi.encodePacked('{"name": "Deed #', toString(tokenId), '", "description": " A Deed represents ownership of property used to compliment your Loot during your adventures. All Deeds are randomly generated and stored on chain. Stats, images, and other functionality are intentionally omitted for others to interpret. Feel free to use Deed in any way you want.", "image": "data:image/svg+xml;base64,', Base64.encode(bytes(output)), '"}'))));
         output = string(abi.encodePacked('data:application/json;base64,', json));
@@ -1549,15 +1555,13 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
     }
 
     // DEBUG mints
-    function testClaim() public nonReentrant {
-        uint256 id = 0;
-        while(id != 64) {
-            _safeMint(_msgSender(), id);
-            id++;
+    function testClaim(uint256 max) public nonReentrant {
+        uint256 x;
+        while(x != max) {
+            _safeMint(_msgSender(), x);
+            x++;
         }
     }
-
-    // DEBUG print list of token info
 
     function claim(uint256 tokenId) public nonReentrant {
         require(tokenId > 0 && tokenId < 7778, "Token ID invalid");
