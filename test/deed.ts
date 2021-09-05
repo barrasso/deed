@@ -11,10 +11,8 @@ describe("Deed", () => {
   const numberToMint = 75;
 
   beforeEach(async () => {
-    // 1
     const signers = await ethers.getSigners();
 
-    // 2
     const deedFactory = (await ethers.getContractFactory(
       "Deed",
       signers[0]
@@ -27,7 +25,6 @@ describe("Deed", () => {
     await deed.testClaim(numberToMint);
   });
 
-  // 4
   describe("tokenURI()", async () => {
     it("should print token URI string", async () => {
       let i = 0;
