@@ -1321,10 +1321,7 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Trebuchet",
         "Catapult",
         "Cannon",
-        "Battering Ram",
-        "Stocked Armory",
-        "Dragon's Call",
-        "Gigantic Troll"
+        "Battering Ram"
     ];
     
     string[] private crops = [
@@ -1500,16 +1497,17 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         uint256 rand = random(string(abi.encodePacked(keyPrefix, toString(tokenId))));
         string memory output = sourceArray[rand % sourceArray.length];
         uint256 greatness = rand % 21;
+	uint256 legendary = rand % 99;
 
         if (keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('DWELLING'))) {
             if (greatness >= 6) {
-				if (greatness <= 11) {
+		if (greatness <= 11) {
                 	output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output));
                 } else if (keccak256(abi.encodePacked(output)) != (keccak256(abi.encodePacked('Barn')) || keccak256(abi.encodePacked('Farmhouse')) )) && (greatness <= 18) {
-                    output = string(abi.encodePacked(output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
+                	output = string(abi.encodePacked(output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
                 } else {
-					output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
-				}
+			output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
+		}
             } 
         }
         
@@ -1535,6 +1533,11 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
                 } else {
                     output = string(abi.encodePacked('"', name[0], name[1], '" ', output, ' ', weaponrySuffixes[rand % weaponrySuffixes.length]));
             }
+	    	if (legendary == 98) {
+	        	output = string(abi.encodePacked('Call of the Dragon'));
+	    	} else if (legendary == 97) {
+				output = string(abi.encodePacked('Gigantic Troll');
+	    	}
         }
         return output;
     }
