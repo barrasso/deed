@@ -1287,13 +1287,7 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
 
 
 contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
-
-    string[] private acreage = [
-        "1 Acre",
-        "2 Acres",
-        "3 Acres"
-    ];
-    
+  
     string[] private dwellings = [
         "Cottage",
         "Hideaway",
@@ -1306,12 +1300,15 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Outpost"
     ];
 
-    string[] private accessories = [
+    string[] private accessoryPrimary = [
         "Well",
         "Forge",
         "Loom",
         "Alchemy Lab",
-        "Workbench",
+        "Workbench"
+    ];
+    
+    string[] private accessorySecondary = [
         "Archery Range",
         "Windmill",
         "Summoning Circle",
@@ -1324,10 +1321,7 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Trebuchet",
         "Catapult",
         "Cannon",
-        "Battering Ram",
-        "Stocked Armory",
-        "Dragon's Call",
-        "Gigantic Troll"
+        "Battering Ram"
     ];
     
     string[] private crops = [
@@ -1375,12 +1369,10 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Forsaken",
         "Gnome-ridden", 
         "Haunted",
-        "Hidden",
         "Holy",
         "Meticulously Maintained",
         "Mysterious",
         "Old",
-        "Ornamental",
         "Plagued",
         "Rustic",
         "Sacred",
@@ -1394,7 +1386,6 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         "of the Hunters",
         "of the Shamans",
         "of the Assassins",
-        "of the Druids",
         "of the Gnomes",
         "of the Goblins",
         "of the Ogres",
@@ -1405,7 +1396,7 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         "of the Prince",
         "of the Princess",
         "of the Knights",
-        "of the Noblemen",
+        "of the Nobles",
         "of the Clergy",
         "of the Chancellor",
         "of the Oracles",
@@ -1414,70 +1405,80 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         "of the Zealots"
     ];
     
-    string[] private weaponryPrefixes = [
-        "Arcane",
-        "Blessed",
-        "Celestial",
-        "Condemned",
-        "Consecrated",
-        "Cursed",
-        "Enchanted",
-        "Fiery",
-        "Gilded",
-        "Poisonous",
-        "Redeemed",
-        "Righteous",
-        "Runic",
+    string[] private weaponryPrefixesFormer = [
+        "Blood",
+        "Demon",
+        "Doom",
+        "Dragon",
+        "Dream",
+        "Holy",
+        "Light",
+        "Nether",
+        "Poison",
+        "Razor",
+        "Shadow",
+        "Sorrow",
+        "Soul",
         "Twilight",
-        "Spellbound",
-        "Wicked",
-        "Moontouched",
-        "Shadowveil",
-        "Netherbound",
-        "Lightbane",
-        "Acidmaw",
-        "Serpentspine",
-        "Voidmoon"
+        "Void",
+        "War",
+        "Winter"
+    ];
+
+    string[] private weaponryPrefixesLatter = [
+        "bane",
+        "bound",
+        "cry",
+        "glow",
+        "grasp",
+        "fang",
+        "fire",
+        "fury",
+        "heart",
+        "maw",
+        "mourn",
+        "quake",
+        "rage",
+        "shroud",
+        "storm",
+        "strike",
+        "sworn",
+        "veil",
+        "wrath"
     ];
 
     string[] private weaponrySuffixes = [
-        "of the Void",
-        "of the Nether",
-        "of the Flames",
-        "of the Light",
-        "of the Dark",
-        "of the Twilight",
-        "of the Sun",
-        "of the Moon",
-        "of the Serpent",
-        "of the Eagle",
-        "of the Boar",
-        "of the Bear",
-        "of the Lion",
+        "of the Banshee",
         "of the Basilisk",
-        "of the Hydra",
-        "of the Toad",
-        "of the Owl",
+        "of the Bear",
+        "of the Boar",
         "of the Dragon",
-        "of the Wolf",
+        "of the Eagle",
+        "of the Flames",
+        "of the Hydra",
+        "of the Lion",
+        "of the Moon",
         "of the Phoenix",
-        "of the Tiger"
+        "of the Raven",
+        "of the Serpent",
+        "of the Sun",
+        "of the Wolf"
     ];
-    
+
     function random(string memory input) internal pure returns (uint256) {
         return uint256(keccak256(abi.encodePacked(input)));
     }
     
-    function getAcreage(uint256 tokenId) public view returns (string memory) {
-        return pluck(tokenId, "ACREAGE", acreage);
-    }
-    
     function getDwelling(uint256 tokenId) public view returns (string memory) {
-        return pluck(tokenId, "DWELLING", dwellings);
+        return pluck(tokenId, "HOUSE", dwellings);
     }
     
-    function getAccessory(uint256 tokenId) public view returns (string memory) {
-        return pluck(tokenId, "ACCESSORY", accessories);
+    function getPrimaryAccessory(uint256 tokenId) public view returns (string memory) {
+        return pluck(tokenId, "FIRST", accessoryPrimary);
+    }
+    
+    function getSecondaryAccessory(uint256 tokenId) public view returns (string memory) {
+        return pluck(tokenId, "SECOND", accessorySecondary);
     }
     
     function getWeapon(uint256 tokenId) public view returns (string memory) {
@@ -1485,7 +1486,7 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
     }
 
     function getCrop(uint256 tokenId) public view returns (string memory) {
-        return pluck(tokenId, "CROP", crops);
+        return pluck(tokenId, "CROPS", crops);
     }
     
     function getAnimal(uint256 tokenId) public view returns (string memory) {
@@ -1496,20 +1497,47 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         uint256 rand = random(string(abi.encodePacked(keyPrefix, toString(tokenId))));
         string memory output = sourceArray[rand % sourceArray.length];
         uint256 greatness = rand % 21;
+	uint256 legendary = rand % 99;
 
         if (keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('DWELLING'))) {
-            output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output));
-            if (greatness >= 11) {
-                output = string(abi.encodePacked(output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
-            }
+            if (greatness >= 6) {
+		if (greatness <= 11) {
+                	output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output));
+                } else if (keccak256(abi.encodePacked(output)) != (keccak256(abi.encodePacked('Barn')) || keccak256(abi.encodePacked('Farmhouse')) )) && (greatness <= 18) {
+                	output = string(abi.encodePacked(output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
+                } else {
+			output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
+		}
+            } 
+        }
+        
+        if (keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('FIRST')) || keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('SECOND'))) {
+            if (greatness >= 16) {
+                if (greatness == 20) {
+                    output = string(abi.encodePacked('Enchanted ', output);
+                } else {
+                    output = string(abi.encodePacked('Upgraded ', output);
+                }
+            }  
         }
 
         if (keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('WEAPON'))) {
-            if (greatness >= 19) {
-                output = string(abi.encodePacked('"', weaponryPrefixes[rand % weaponryPrefixes.length], '" ', output));
-            } else if (greatness == 20) {
-                output = string(abi.encodePacked(output, ' ', weaponrySuffixes[rand % weaponrySuffixes.length]));
+            if (greatness >= 16) {
+                string[2] memory name;
+                name[0] = weaponryPrefixesFormer[rand % weaponryPrefixesFormer.length];
+                name[1] = weaponryPrefixesLatter[rand % weaponryPrefixesLatter.length];
+                if (greatness == 16 || greatness == 17) {
+                    output = string(abi.encodePacked('"', name[0], name[1], '" ', output));
+                } else if (greatness == 18 || greatness == 19) {
+                    output = string(abi.encodePacked(output, ' ', weaponrySuffixes[rand % weaponrySuffixes.length]));
+                } else {
+                    output = string(abi.encodePacked('"', name[0], name[1], '" ', output, ' ', weaponrySuffixes[rand % weaponrySuffixes.length]));
             }
+	    	if (legendary == 98) {
+	        	output = string(abi.encodePacked('Call of the Dragon'));
+	    	} else if (legendary == 97) {
+				output = string(abi.encodePacked('Gigantic Troll');
+	    	}
         }
         return output;
     }
@@ -1518,15 +1546,15 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         string[17] memory parts;
         parts[0] = ''; //'<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: black; font-family: Courier New, cursive; font-size: 15px; }</style><rect width="100%" height="100%" fill="antiquewhite" /><text x="10" y="20" class="base">';
 
-        parts[1] = getAcreage(tokenId);
+        parts[1] = getDwelling(tokenId);
 
         parts[2] = ' \n';//'</text><text x="10" y="40" class="base">';
 
-        parts[3] = getDwelling(tokenId);
+        parts[3] = getPrimaryAccessory(tokenId);
 
         parts[4] = ' \n';//'</text><text x="10" y="60" class="base">';
-
-        parts[5] = getAccessory(tokenId);
+        
+        parts[5] = getSecondaryAccessory(tokenId);
 
         parts[6] = ' \n';//'</text><text x="10" y="80" class="base">';
 
