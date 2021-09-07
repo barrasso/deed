@@ -2,6 +2,12 @@
 
 A Deed represents ownership of property used to compliment your Loot during your adventures. All Deeds are randomly generated and stored on chain. Stats, images, and other functionality are intentionally omitted for others to interpret. Feel free to use Deed in any way you want.
 
+### Contracts
+
+#### Testnet: https://rinkeby.etherscan.io/address/0xc82a7c059951ca3ff9df805454c5c07c3e4036a9
+
+#### Mainnet: TBD
+
 ## Usage
 
 Clone this repository, then install the dependencies with `npm install`. Build everything with `npm run build`. https://hardhat.org has excellent docs, and can be used as reference for extending this project.
