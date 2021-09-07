@@ -8,11 +8,13 @@ import "@typechain/hardhat";
 import "@nomiclabs/hardhat-etherscan";
 import "solidity-coverage";
 
-const INFURA_API_KEY = process.env.INFURA_API_KEY || "";
-const RINKEBY_PRIVATE_KEY =
-  process.env.RINKEBY_PRIVATE_KEY! ||
-  "0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"; // well known private key
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const ETHERSCAN_KEY = process.env.ETHERSCAN_KEY;
+
+const PROVIDER_URL_RINKEBY = process.env.PROVIDER_URL_RINKEBY;
+const PRIVATE_KEY_RINKEBY = process.env.TESTNET_DEPLOY_PRIVATE_KEY;
+
+const PROVIDER_URL_MAINNET = process.env.PROVIDER_URL_MAINNET;
+const PRIVATE_KEY_MAINNET = process.env.DEPLOY_PRIVATE_KEY;
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -23,17 +25,19 @@ const config: HardhatUserConfig = {
     hardhat: {},
     localhost: {},
     rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${INFURA_API_KEY}`,
-      accounts: [RINKEBY_PRIVATE_KEY],
+      url: PROVIDER_URL_RINKEBY,
+      accounts: [`${PRIVATE_KEY_RINKEBY}`],
+    },
+    mainnet: {
+      url: PROVIDER_URL_MAINNET,
+      accounts: [`${PRIVATE_KEY_MAINNET}`],
     },
     coverage: {
       url: "http://127.0.0.1:8555", // Coverage launches its own ganache-cli client
     },
   },
   etherscan: {
-    // Your API key for Etherscan
-    // Obtain one at https://etherscan.io/
-    apiKey: ETHERSCAN_API_KEY,
+    apiKey: ETHERSCAN_KEY,
   },
 };
 
