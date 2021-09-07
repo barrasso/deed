@@ -1,6 +1,6 @@
 {
-  "name": "solidity-ts-dev-stack-example",
-  "version": "0.0.2",
+  "name": "deed",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rhlsthrm/solidity-ts-dev-stack-example.git"
+    "url": "git+https://github.com/barrasso/deed"
   },
-  "author": "rhlsthrm",
+  "author": "barrasso",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rhlsthrm/solidity-ts-dev-stack-example/issues"
+    "url": "https://github.com/barrasso/deed/issues"
   },
-  "homepage": "https://github.com/rhlsthrm/solidity-ts-dev-stack-example#readme",
+  "homepage": "https://github.com/barrasso/deed#readme",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-etherscan": "^2.1.2",
