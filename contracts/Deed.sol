@@ -2,8 +2,6 @@
 
 pragma solidity ^0.8.0;
 
-import "hardhat/console.sol";
-
 /**
  * @dev Interface of the ERC165 standard, as defined in the
  * https://eips.ethereum.org/EIPS/eip-165[EIP].
@@ -1370,7 +1368,6 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Gnome-ridden", 
         "Haunted",
         "Holy",
-        "Meticulously Maintained",
         "Mysterious",
         "Old",
         "Plagued",
@@ -1497,26 +1494,26 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
         uint256 rand = random(string(abi.encodePacked(keyPrefix, toString(tokenId))));
         string memory output = sourceArray[rand % sourceArray.length];
         uint256 greatness = rand % 21;
-	uint256 legendary = rand % 99;
+	    uint256 legendary = rand % 99;
 
-        if (keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('DWELLING'))) {
+        if ((keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('HOUSE'))) && (keccak256(abi.encodePacked(output)) != keccak256(abi.encodePacked('Barn'))) && (keccak256(abi.encodePacked(output)) != keccak256(abi.encodePacked('Farmhouse')))) {
             if (greatness >= 6) {
-		if (greatness <= 11) {
-                	output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output));
-                } else if (keccak256(abi.encodePacked(output)) != (keccak256(abi.encodePacked('Barn')) || keccak256(abi.encodePacked('Farmhouse')) )) && (greatness <= 18) {
-                	output = string(abi.encodePacked(output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
-                } else {
-			output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
-		}
-            } 
-        }
+                if ((greatness <= 11) ) {
+                    output = string(abi.encodePacked(output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
+                } else if (greatness <= 18) {
+                    output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output));
+                } else if (greatness >= 19) {
+                    output = string(abi.encodePacked(dwellingPrefixes[rand % dwellingPrefixes.length], ' ', output, ' ', dwellingSuffixes[rand % dwellingSuffixes.length]));
+                }
+            }
+        } 
         
         if (keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('FIRST')) || keccak256(abi.encodePacked(keyPrefix)) == keccak256(abi.encodePacked('SECOND'))) {
             if (greatness >= 16) {
                 if (greatness == 20) {
-                    output = string(abi.encodePacked('Enchanted ', output);
+                    output = string(abi.encodePacked('Enchanted ', output));
                 } else {
-                    output = string(abi.encodePacked('Upgraded ', output);
+                    output = string(abi.encodePacked('Upgraded ', output));
                 }
             }  
         }
@@ -1532,72 +1529,61 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
                     output = string(abi.encodePacked(output, ' ', weaponrySuffixes[rand % weaponrySuffixes.length]));
                 } else {
                     output = string(abi.encodePacked('"', name[0], name[1], '" ', output, ' ', weaponrySuffixes[rand % weaponrySuffixes.length]));
+                }
+                if (legendary == 98) {
+                    output = string(abi.encodePacked('Call of the Dragon'));
+                } else if (legendary == 97) {
+                    output = string(abi.encodePacked('Gigantic Troll'));
+                }
             }
-	    	if (legendary == 98) {
-	        	output = string(abi.encodePacked('Call of the Dragon'));
-	    	} else if (legendary == 97) {
-				output = string(abi.encodePacked('Gigantic Troll');
-	    	}
         }
         return output;
     }
 
     function tokenURI(uint256 tokenId) override public view returns (string memory) {
         string[17] memory parts;
-        parts[0] = ''; //'<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: black; font-family: Courier New, cursive; font-size: 15px; }</style><rect width="100%" height="100%" fill="antiquewhite" /><text x="10" y="20" class="base">';
+        parts[0] = '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: black; font-family: serif; font-size: 15px; }</style><rect width="100%" height="100%" fill="antiquewhite" /><text x="10" y="20" class="base">';
 
         parts[1] = getDwelling(tokenId);
 
-        parts[2] = ' \n';//'</text><text x="10" y="40" class="base">';
+        parts[2] = '</text><text x="10" y="40" class="base">';
 
         parts[3] = getPrimaryAccessory(tokenId);
 
-        parts[4] = ' \n';//'</text><text x="10" y="60" class="base">';
+        parts[4] = '</text><text x="10" y="60" class="base">';
         
         parts[5] = getSecondaryAccessory(tokenId);
 
-        parts[6] = ' \n';//'</text><text x="10" y="80" class="base">';
+        parts[6] = '</text><text x="10" y="80" class="base">';
 
         parts[7] = getWeapon(tokenId);
 
-        parts[8] = ' \n';//'</text><text x="10" y="100" class="base">';
+        parts[8] = '</text><text x="10" y="100" class="base">';
 
         parts[9] = getCrop(tokenId);
 
-        parts[10] = ' \n';//'</text><text x="10" y="120" class="base">';
+        parts[10] = '</text><text x="10" y="120" class="base">';
 
         parts[11] = getAnimal(tokenId);
 
-        parts[16] = '';//'</text></svg>';
+        parts[16] = '</text></svg>';
 
         string memory output = string(abi.encodePacked(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8]));
         output = string(abi.encodePacked(output, parts[9], parts[10], parts[11], parts[12], parts[13], parts[14], parts[15], parts[16]));
 
-        console.log(output);
-        console.log('\n');
-        
-        string memory json = Base64.encode(bytes(string(abi.encodePacked('{"name": "Deed #', toString(tokenId), '", "description": " A Deed represents ownership of property used to compliment your Loot during your adventures. All Deeds are randomly generated and stored on chain. Stats, images, and other functionality are intentionally omitted for others to interpret. Feel free to use Deed in any way you want.", "image": "data:image/svg+xml;base64,', Base64.encode(bytes(output)), '"}'))));
+        string memory json = Base64.encode(bytes(string(abi.encodePacked('{"name": "Deed #', toString(tokenId), '", "description": "A Deed represents ownership of property used to compliment your Loot during your adventures. All Deeds are randomly generated and stored on chain. Stats, images, and other functionality are intentionally omitted for others to interpret. Feel free to use Deed in any way you want.", "image": "data:image/svg+xml;base64,', Base64.encode(bytes(output)), '"}'))));
         output = string(abi.encodePacked('data:application/json;base64,', json));
 
         return output;
     }
 
-    // DEBUG mints
-    function testClaim(uint256 max) public nonReentrant {
-        uint256 x;
-        while(x != max) {
-            _safeMint(_msgSender(), x);
-            x++;
-        }
-    }
-
     function claim(uint256 tokenId) public nonReentrant {
-        require(tokenId > 0 && tokenId < 7778, "Token ID invalid");
+        require(tokenId > 0 && tokenId < 8887, "Token ID invalid");
         _safeMint(_msgSender(), tokenId);
     }
     
     function ownerClaim(uint256 tokenId) public nonReentrant onlyOwner {
-        require(tokenId > 7777 && tokenId < 8001, "Token ID invalid");
+        require(tokenId > 8888 && tokenId < 10001, "Token ID invalid");
         _safeMint(owner(), tokenId);
     }
     

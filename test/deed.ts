@@ -8,7 +8,7 @@ const { expect } = chai;
 
 describe("Deed", () => {
   let deed: Deed;
-  const numberToMint = 75;
+  const numberToMint = 8;
 
   beforeEach(async () => {
     const signers = await ethers.getSigners();
@@ -19,17 +19,15 @@ describe("Deed", () => {
     )) as Deed__factory;
     deed = await deedFactory.deploy();
     await deed.deployed();
-
-
-    // Mint some deeds.
-    await deed.testClaim(numberToMint);
   });
 
   describe("tokenURI()", async () => {
-    it("should print token URI string", async () => {
+    it("should print token URI", async () => {
       let i = 0;
       while(i != numberToMint){
         const uri = await deed.tokenURI(i);
+        console.log(uri);
+        console.log('\n------------------\n');
         i++;
       }
     });
