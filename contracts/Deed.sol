@@ -1530,11 +1530,11 @@ contract Deed is ERC721Enumerable, ReentrancyGuard, Ownable {
                 } else {
                     output = string(abi.encodePacked('"', name[0], name[1], '" ', output, ' ', weaponrySuffixes[rand % weaponrySuffixes.length]));
                 }
-                if (legendary == 98) {
-                    output = string(abi.encodePacked('Call of the Dragon'));
-                } else if (legendary == 97) {
-                    output = string(abi.encodePacked('Gigantic Troll'));
-                }
+            }
+            if (legendary == 98) {
+                output = string(abi.encodePacked('Call of the Dragon'));
+            } else if (legendary == 97) {
+                output = string(abi.encodePacked('Gigantic Troll'));
             }
         }
         return output;
