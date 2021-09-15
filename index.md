@@ -1,12 +1,10 @@
 ## The Deed Project
 
-You can use the [editor on GitHub](https://github.com/barrasso/deed/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Loot sparks imagination. Deeds spark imagination. We want to see where this universe can go. It's all an exploration in pushing the boundaries of what an NFT can be. Deeds are a perfect fit in this ongoing journey.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### What's the point?
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Imagine a game company reveals a trailer for an upcoming game next year. They make an announcement offering the first 10,000 people who sign up on their platform a free unique in-game item (or set of items) as a promotion. If you're interested in the game, you'd sign up of course. But let's say when the game releases, it turns out to be a giant flop and the game fizzles out in a few months. Those in-game items are now essentially worthless. The core idea of Loot and Deed reverse this model. It offers the in-game items first, and the games second. The future of gaming will be built on Web 3. It allows any and all Web 3 game developers to incorporate Loot/Deed in their game if they wish. Since Web 3 will be fully interoperable in the future, those in-game items can then be ported across multiple games without losing it's value. The best analogy of this would be if today, let's say you bought a really cool skin for a gun in Fortnite. As time goes on, you stop playing Fortnite and instead transition to Counterstrike. Wouldn't it be mindblowing if you could use that same gun skin you bought for Fortnite in Counterstrike? That is the essence of what Loot/Deed is/solves. Interoperability/composability/portability of in-game assets.
 
 ```markdown
 Syntax highlighted code block
@@ -28,10 +26,7 @@ Syntax highlighted code block
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/barrasso/deed/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Ready to join the Deed community, anon? Join our [Discord](https://discord.gg/pAqJTCGHPe) and come hang out with us!
