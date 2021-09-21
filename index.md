@@ -24,7 +24,7 @@ Syntax highlighted code block
 [Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+For more details see [Deed image](https://storage.opensea.io/files/73cea5a0b713b491645e089067c1383f.svg).
 
 
 ### Support or Contact
