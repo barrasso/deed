@@ -21,7 +21,7 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
+[Link](url) and [![Deed #1337](https://storage.opensea.io/files/73cea5a0b713b491645e089067c1383f.svg)][https://opensea.io/assets/0x09151ae179692894c931276d546ca5a2f1907326/1337]
 ```
 
 For more details see [Deed image](https://storage.opensea.io/files/73cea5a0b713b491645e089067c1383f.svg).
