@@ -8,26 +8,9 @@ Imagine a game company reveals a trailer for an upcoming game next year. They ma
 
 
 Example Deed #1337:
-[![Deed #1337](https://storage.opensea.io/files/73cea5a0b713b491645e089067c1383f.svg)](https://opensea.io/assets/0x09151ae179692894c931276d546ca5a2f1907326/1337)
+<img src="https://storage.opensea.io/files/73cea5a0b713b491645e089067c1383f.svg" alt=""> </div>
 
 
 For more details see [Deed image](https://storage.opensea.io/files/73cea5a0b713b491645e089067c1383f.svg).
-
-```
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-```
-### Support or Contact
 
 Ready to join the Deed community, anon? Join our [Discord](https://discord.gg/pAqJTCGHPe) and come hang out with us!
