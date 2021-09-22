@@ -8,7 +8,7 @@ Imagine a game company reveals a trailer for an upcoming game next year. They ma
 
 
 Example Deed #1337:
-<img src="https://storage.opensea.io/files/73cea5a0b713b491645e089067c1383f.svg" alt=""> </div>
+<img src="https://storage.opensea.io/files/73cea5a0b713b491645e089067c1383f.svg" alt="">
 
 
 For more details see [Deed image](https://storage.opensea.io/files/73cea5a0b713b491645e089067c1383f.svg).
