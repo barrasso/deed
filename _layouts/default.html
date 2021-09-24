@@ -6,7 +6,7 @@
 
 {% seo %}
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
             {% for entry in social %}
                 {% assign key = entry | first %}
                 {% if social[key].id %}
-                    <a href="{{ social[key].href }}{{ social[key].id }}" title="{{ social[key].title }}"><i class="fa {{ social[key].fa-icon }}"></i></a>
+                    <a href="{{ social[key].href }}{{ social[key].id }}" title="{{ social[key].title }}"><i class="fab {{ social[key].fa-icon }}"></i></a>
                 {% endif %}
             {% endfor %}
         </div>
