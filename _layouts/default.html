@@ -44,6 +44,18 @@
 
         {{ content }}
 
+        {% if site.data.socials %}
+        <div id="socials">
+            {% assign social = site.data.socials %}
+            {% for entry in social %}
+                {% assign key = entry | first %}
+                {% if social[key].id %}
+                    <a href="{{ social[key].href }}{{ social[key].id }}" title="{{ social[key].title }}"><i class="fa {{ social[key].fa-icon }}"></i></a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
       </section>
     </div>
 
