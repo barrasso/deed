@@ -3,6 +3,10 @@
 
 @import "{{ site.theme }}";
 
-header {
+#header {
+  display: none;
+}
+
+#title {
   display: none;
 }
