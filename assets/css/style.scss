@@ -1,8 +1,14 @@
 ---
 ---
 
-@import "{{ site.theme }}";
-
 body {
   background-color: antiquewhite;
+}
+
+#header {
+  display: none;
+}
+
+#title {
+  display: none;
 }
