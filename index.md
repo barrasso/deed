@@ -1,6 +1,6 @@
 ## The Deed Project
 
-Loot sparks imagination. Deeds spark imagination. We want to see where this universe can go. It's all an exploration in pushing the boundaries of what an NFT can be. Deeds are a perfect fit in this ongoing journey.
+Loot sparksasdf imagination. Deeds spark imagination. We want to see where this universe can go. It's all an exploration in pushing the boundaries of what an NFT can be. Deeds are a perfect fit in this ongoing journey.
 
 ### What's the point?
 
