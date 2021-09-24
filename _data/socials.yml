@@ -15,3 +15,9 @@ twitter:
   href: 'https://www.twitter.com/'
   title: 'Twitter'
   fa-icon: 'fa-twitter'
+  
+etherscan:
+  id: '0x09151ae179692894c931276d546ca5a2f1907326'
+  href: 'https://etherscan.io/address/'
+  title: 'Etherscan'
+  fa-icon: 'fa-ethereum'
