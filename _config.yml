@@ -1,4 +1,4 @@
 remote_theme: pages-themes/midnight@v0.2.0
-title: null
+title: false
 plugins:
 - jekyll-remote-theme
