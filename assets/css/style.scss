@@ -1,7 +1,7 @@
 ---
 ---
 
-@import "{{ pages-themes/midnight@v0.2.0 }}";
+@import "{{ site.theme }}";
 
 header {
   display: none;
