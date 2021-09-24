@@ -1,0 +1,17 @@
+discord:
+  id: 'BddtgNbatK'
+  href: 'https://discord.gg/'
+  title: 'Discord'
+  fa-icon: 'fa-discord-square'
+
+github:
+  id: 'barrasso/deed'
+  href: 'https://www.github.com/'
+  title: 'Github'
+  fa-icon: 'fa-github-square'
+
+twitter:
+  id: 'deed_project'
+  href: 'https://www.twitter.com/'
+  title: 'Twitter'
+  fa-icon: 'fa-twitter-square'
