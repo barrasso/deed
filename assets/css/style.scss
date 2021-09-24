@@ -1,6 +1,8 @@
 ---
 ---
 
+@import "{{ site.theme }}";
+
 body {
   background-color: antiquewhite;
 }
@@ -12,5 +14,3 @@ body {
 #title {
   display: none;
 }
-
-@import "{{ site.theme }}";
