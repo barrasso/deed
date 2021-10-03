@@ -23,7 +23,7 @@
             {% for entry in social %}
                 {% assign key = entry | first %}
                 {% if social[key].id %}
-                    <a href="{{ social[key].href }}{{ social[key].id }}" title="{{ social[key].title }}"><i class="fab {{ social[key].fa-icon }}"></i></a>
+                    <a href="{{ social[key].href }}{{ social[key].id }}" title="{{ social[key].title }}"><span style="color: Mediumslateblue;"><i class="fab {{ social[key].fa-icon }}"></i></span></a>
                 {% endif %}
             {% endfor %}
         </div>
