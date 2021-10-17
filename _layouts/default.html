@@ -19,7 +19,7 @@
   <body>
     {% include head-custom.html %}
         {% if site.data.socials %}
-          <div id="socials">
+          <div id="socials" style="text-align: center">
             {% assign social = site.data.socials %}
             {% for entry in social %}
                 {% assign key = entry | first %}
